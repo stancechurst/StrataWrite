@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>StrataWrite Support</title>
-  <meta name="description" content="Help, FAQs, and contact information for StrataWrite on macOS and iPadOS.">
+  <title>StrataWrite</title>
+  <meta name="description" content="StrataWrite — a research‑first writing app for macOS and iPadOS. Clean drafting, daily word counts, and easy exports.">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <meta property="og:title" content="StrataWrite Support">
-  <meta property="og:description" content="Get help with StrataWrite, view FAQs, or contact support.">
+  <meta property="og:title" content="StrataWrite">
+  <meta property="og:description" content="Research-first writing on macOS & iPadOS.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="android-chrome-512x512.png">
   <style>
@@ -23,9 +23,8 @@
       --accent: #79b4ff;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body { height: 100%; margin: 0; }
     body {
-      margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       background: radial-gradient(1200px 600px at 80% -10%, var(--bg2), var(--bg)) no-repeat fixed;
@@ -73,9 +72,13 @@
     details > summary { cursor: pointer; font-weight: 600; }
     footer { margin-top: 36px; color: var(--muted); font-size: 14px; text-align: center; }
     code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .kicker { text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; font-size: 12px; }
     .grid{ display:grid; gap:14px; grid-template-columns: 1fr; }
     @media (min-width: 820px){ .grid{ grid-template-columns: 1fr 1fr; } }
+
+    .shots{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+    .shots img{width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 24px rgba(0,0,0,0.25)}
+    @media (min-width: 820px){ .shots{grid-template-columns:1fr 1fr} }
+
   </style>
 </head>
 <body>
@@ -83,11 +86,11 @@
     <header class="hero">
       <img src="android-chrome-192x192.png" alt="StrataWrite icon">
       <div>
-        <div class="kicker">Support</div>
         <h1>StrataWrite</h1>
-        <p class="sub">A research‑first writing app for macOS and iPadOS. Find help, FAQs, and contact information.</p>
+        <p class="sub">A research‑first writing app for macOS and iPadOS. Clean drafting, daily word‑count goals, and reliable exports.</p>
         <div class="actions">
           <a class="btn primary" href="mailto:stance@mac.com?subject=StrataWrite%20Support">Email Support</a>
+          <a class="btn" href="blog.html">Blog & Updates</a>
           <a class="btn" href="#faq">View FAQs</a>
           <a class="btn" href="#troubleshooting">Troubleshooting</a>
         </div>
@@ -110,10 +113,38 @@
       </div>
     </section>
 
+
+    <section id="features">
+      <h2>Why StrataWrite</h2>
+      <div class="grid">
+        <div>
+          <p><strong>Focused drafting:</strong> A clean editor designed for long‑form writing and revision without visual noise.</p>
+          <p><strong>Daily momentum:</strong> Built‑in word‑count goals with lightweight progress tracking to keep projects moving.</p>
+          <p><strong>Straightforward exports:</strong> Get your work out cleanly as Markdown (<code>.md</code>) or plain text (<code>.txt</code>).</p>
+        </div>
+        <div>
+          <p><strong>macOS + iPadOS:</strong> Native performance and familiar interactions across your devices.</p>
+          <p><strong>Local first:</strong> Your manuscripts stay on your device; optional iCloud sync is managed by Apple.</p>
+          <p><strong>Simple by design:</strong> Essentials for research writing, without excess configuration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Screenshots</h2>
+      <div class="shots">
+        <img src="assets/shot1.png" alt="StrataWrite screenshot 1">
+        <img src="assets/shot2.png" alt="StrataWrite screenshot 2">
+        <img src="assets/shot3.png" alt="StrataWrite screenshot 3">
+        <img src="assets/shot4.png" alt="StrataWrite screenshot 4">
+      </div>
+    </section>
+
+
     <section id="troubleshooting">
       <h2>Troubleshooting</h2>
       <details>
-        <summary>The support site shows a 404 or old content.</summary>
+        <summary>The site shows a 404 or old content.</summary>
         <p>Try a hard refresh (⌘‑Shift‑R on macOS) or clear the browser cache. If the issue persists, email support with your browser version.</p>
       </details>
       <details>
@@ -144,6 +175,7 @@
 
     <footer>
       <p>&copy; <span id="year"></span> StrataWrite. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></p>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
   </div>
