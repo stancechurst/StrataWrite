@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StrataFeed — StrataSuite</title>
+
+  <meta name="description" content="StrataFeed is a lightweight research discovery and triage app for macOS and iPadOS. Powered by OpenAlex to help you keep up with new papers and explore topics.">
+  <meta property="og:title" content="StrataFeed — StrataSuite">
+  <meta property="og:description" content="Research discovery and triage for macOS & iPadOS. Powered by OpenAlex.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="android-chrome-512x512.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <style>
+    :root {
+      --bg: #0d2a4a;
+      --bg2: #0f3962;
+      --text: #e8f0fe;
+      --muted: #b7c6de;
+      --accent: #79b4ff;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.04);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, var(--bg2), var(--bg)) no-repeat fixed;
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); }
+    code { color: #d7e7ff; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    header.hero {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 26px 24px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+    }
+
+    header.hero img {
+      width: 72px; height: 72px; border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      object-fit: cover;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: 0.2px; }
+    .sub { color: var(--muted); font-size: 15px; margin: 0; }
+
+    .actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+      color: white; text-decoration: none; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
+    .btn.primary { background: linear-gradient(180deg, #5aa0ff, #3a7be6); border: none; }
+    .btn.ghost { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.12); }
+    .btn.small { padding: 10px 12px; font-size: 14px; border-radius: 10px; }
+
+    section {
+      margin-top: 26px;
+      padding: 22px 24px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    h2 { margin: 0 0 10px; font-size: 20px; }
+    .kicker { color: var(--muted); margin: 0 0 14px; }
+
+    .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .card {
+      padding: 16px 16px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .list { margin: 0; padding-left: 18px; color: var(--muted); }
+    .list li { margin: 6px 0; }
+
+    .shots { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 10px; }
+    .shots img {
+      width: 100%; height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+    @media (min-width: 820px) { .shots { grid-template-columns: 1fr 1fr; } }
+
+    footer { margin-top: 34px; color: var(--muted); font-size: 14px; text-align: center; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="hero">
+      <img src="assets/stratafeed-icon.png" alt="StrataFeed icon">
+      <div>
+        <h1>StrataFeed</h1>
+        <p class="sub">Research discovery and triage for macOS and iPadOS—built to keep up with new papers and explore topics. Powered by <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:stance@mac.com?subject=StrataFeed%20Support">Email Support</a>
+          <a class="btn" href="index.html#stratasuite">Back to StrataSuite</a>
+          <a class="btn ghost" href="#screenshots">Screenshots</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p class="kicker">
+        StrataFeed is designed for the “top of funnel” part of research: discovery, scanning, and deciding what is worth deeper reading.
+        It helps you stay current and explore emerging directions before you commit time to full-text reading.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <p><strong>Platforms:</strong> macOS &amp; iPadOS</p>
+          <p><strong>Focus:</strong> discovery, triage, and exploration of scholarly literature</p>
+          <p><strong>Data source:</strong> powered by <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a></p>
+        </div>
+
+        <div class="card">
+          <p><strong>Best for:</strong> keeping up with new papers, scanning across fields, and exploring topics</p>
+          <p><strong>Pairs with:</strong> StrataRead (deep reading) and StrataWrite (synthesis and drafting)</p>
+          <p><strong>Support:</strong> <a href="mailto:stance@mac.com?subject=StrataFeed%20Support">stance@mac.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>How StrataFeed Fits a Research Workflow</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>1) Discover</strong></p>
+          <ul class="list">
+            <li>Surface new papers relevant to your interests</li>
+            <li>Explore topics, authors, and trends over time</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p><strong>2) Triage</strong></p>
+          <ul class="list">
+            <li>Make fast decisions: save, dismiss, or revisit</li>
+            <li>Build a short reading queue instead of an endless backlog</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Key Ideas</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>Keep up with new papers:</strong> StrataFeed is built for regular scanning—quickly see what is new without getting buried.</p>
+          <p><strong>Explore topics:</strong> Use discovery as a research method: map an area, find key authors, and follow emerging subfields.</p>
+        </div>
+
+        <div class="card">
+          <p><strong>Powered by OpenAlex:</strong> StrataFeed uses the OpenAlex open scholarly catalog as its metadata backbone.</p>
+          <p><strong>Calm by default:</strong> Minimal interface and fast triage so you spend time reading only what matters.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <h2>Screenshots</h2>
+      <p class="kicker">Add screenshots to <code>assets/</code> and update the filenames below.</p>
+
+      <div class="shots">
+        <img src="assets/stratafeed-shot1.png" alt="StrataFeed screenshot 1">
+        <img src="assets/stratafeed-shot2.png" alt="StrataFeed screenshot 2">
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> StrataSuite. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></p>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+
+  </div>
+</body>
+</html>
