@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StrataRead — StrataSuite</title>
+
+  <meta name="description" content="StrataRead is a PDF-first reading app for macOS and iPadOS focused on annotation and integrating insights into your note-taking workflow (Obsidian, StrataWrite, and more).">
+  <meta property="og:title" content="StrataRead — StrataSuite">
+  <meta property="og:description" content="PDF-first reading with an annotation-centric workflow for macOS & iPadOS.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="android-chrome-512x512.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <style>
+    :root {
+      --bg: #0d2a4a;
+      --bg2: #0f3962;
+      --text: #e8f0fe;
+      --muted: #b7c6de;
+      --accent: #79b4ff;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.04);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, var(--bg2), var(--bg)) no-repeat fixed;
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); }
+    code { color: #d7e7ff; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    header.hero {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 26px 24px;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+    }
+
+    header.hero img {
+      width: 72px; height: 72px; border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      object-fit: cover;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: 0.2px; }
+    .sub { color: var(--muted); font-size: 15px; margin: 0; }
+
+    .actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+      color: white; text-decoration: none; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
+    .btn.primary { background: linear-gradient(180deg, #5aa0ff, #3a7be6); border: none; }
+    .btn.ghost { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.12); }
+    .btn.small { padding: 10px 12px; font-size: 14px; border-radius: 10px; }
+
+    section {
+      margin-top: 26px;
+      padding: 22px 24px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    h2 { margin: 0 0 10px; font-size: 20px; }
+    .kicker { color: var(--muted); margin: 0 0 14px; }
+
+    .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .card {
+      padding: 16px 16px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .list { margin: 0; padding-left: 18px; color: var(--muted); }
+    .list li { margin: 6px 0; }
+
+    .shots { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 10px; }
+    .shots img {
+      width: 100%; height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+    @media (min-width: 820px) { .shots { grid-template-columns: 1fr 1fr; } }
+
+    footer { margin-top: 34px; color: var(--muted); font-size: 14px; text-align: center; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="hero">
+      <img src="assets/strataread-icon.png" alt="StrataRead icon">
+      <div>
+        <h1>StrataRead</h1>
+        <p class="sub">PDF-first reading for macOS and iPadOS, designed around annotation and getting insights into your note-taking workflow.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:stance@mac.com?subject=StrataRead%20Support">Email Support</a>
+          <a class="btn" href="index.html#stratasuite">Back to StrataSuite</a>
+          <a class="btn ghost" href="#screenshots">Screenshots</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p class="kicker">
+        StrataRead is built for reading and annotating PDFs with the assumption that your real thinking happens
+        in notes and writing—Obsidian, StrataWrite, and other tools you already use.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <p><strong>Platforms:</strong> macOS &amp; iPadOS</p>
+          <p><strong>Focus:</strong> reading, annotation, and organizing PDFs for research workflows</p>
+          <p><strong>Privacy:</strong> no tracking, no analytics; data stays on-device or in iCloud (if enabled)</p>
+        </div>
+
+        <div class="card">
+          <p><strong>Best for:</strong> researchers who annotate heavily and want to move highlights/notes into a thinking system</p>
+          <p><strong>Works well with:</strong> Obsidian, StrataWrite, and other note-taking workflows</p>
+          <p><strong>Support:</strong> <a href="mailto:stance@mac.com?subject=StrataRead%20Support">stance@mac.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>How StrataRead Fits a Research Workflow</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>1) Read &amp; annotate</strong></p>
+          <ul class="list">
+            <li>Keep PDFs organized for rapid access during research and writing</li>
+            <li>Use annotations to capture arguments, methods, and quotable claims</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p><strong>2) Move insights into notes</strong></p>
+          <ul class="list">
+            <li>Use StrataRead as the reading surface</li>
+            <li>Use your note system (Obsidian, StrataWrite) as the synthesis surface</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Key Ideas</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>Annotation-first:</strong> StrataRead is designed around what matters in scholarly reading: marking up PDFs and extracting meaning.</p>
+          <p><strong>Library-minded:</strong> Keep PDFs organized so you can find what you need quickly—especially during writing.</p>
+        </div>
+
+        <div class="card">
+          <p><strong>Apple-native:</strong> A SwiftUI app built on native Apple frameworks for a clean, responsive experience.</p>
+          <p><strong>Calm by default:</strong> Minimal interface, fewer knobs, more reading.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <h2>Screenshots</h2>
+      <p class="kicker">Add screenshots to <code>assets/</code> and update the filenames below.</p>
+
+      <div class="shots">
+        <img src="assets/strataread-shot1.png" alt="StrataRead screenshot 1">
+        <img src="assets/strataread-shot2.png" alt="StrataRead screenshot 2">
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> StrataSuite. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></p>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+
+  </div>
+</body>
+</html>
