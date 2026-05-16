@@ -3,325 +3,199 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>StrataWrite — StrataSuite</title>
+  <title>StrataWrite &mdash; StrataSuite</title>
 
-  <meta name="description" content="StrataSuite for macOS & iPadOS: StrataWrite (research-first drafting), StrataRead (PDFs & citation workflows), and StrataFeed (research triage for articles and alerts).">
+  <meta name="description" content="StrataSuite for macOS and iPadOS: StrataWrite for research-first drafting and StrataRead for PDF reading and annotation workflows.">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/site.css">
 
-  <meta property="og:title" content="StrataSuite">
-  <meta property="og:description" content="Research-first tools for writing, reading, and triage on macOS & iPadOS.">
+  <meta property="og:title" content="StrataWrite">
+  <meta property="og:description" content="Research-first writing, notes, manuscripts, PDF reading, and annotation workflows for macOS and iPadOS.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="android-chrome-512x512.png">
-
-  <style>
-    :root {
-      --bg: #0d2a4a;
-      --bg2: #0f3962;
-      --card: #0f2238;
-      --text: #e8f0fe;
-      --muted: #b7c6de;
-      --accent: #79b4ff;
-      --border: rgba(255,255,255,0.08);
-      --glass: rgba(255,255,255,0.04);
-      --shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 80% -10%, var(--bg2), var(--bg)) no-repeat fixed;
-      line-height: 1.55;
-    }
-
-    a { color: var(--accent); }
-    code { color: #d7e7ff; }
-
-    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
-
-    header.hero {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 20px;
-      align-items: center;
-      padding: 28px 24px;
-      background: var(--glass);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      backdrop-filter: blur(6px);
-      box-shadow: var(--shadow);
-    }
-
-    header.hero img {
-      width: 76px; height: 76px; border-radius: 16px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-    }
-
-    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: 0.2px; }
-    .sub { color: var(--muted); font-size: 15px; margin: 0; }
-
-    .actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 16px; border-radius: 12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
-      color: white; text-decoration: none; font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.18);
-      transition: transform .06s ease, background .2s ease, border-color .2s ease;
-    }
-
-    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
-    .btn.primary { background: linear-gradient(180deg, #5aa0ff, #3a7be6); border: none; }
-    .btn.ghost { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.12); }
-    .btn.small { padding: 10px 12px; font-size: 14px; border-radius: 10px; }
-
-    section {
-      margin-top: 28px; padding: 22px 24px;
-      background: rgba(0,0,0,0.25);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-
-    h2 { margin: 0 0 10px; font-size: 20px; }
-    .kicker { color: var(--muted); margin: 0 0 14px; }
-
-    .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-    @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-    /* Suite cards */
-    .suite-grid { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 10px; }
-    @media (min-width: 820px) { .suite-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
-    .suite-card {
-      padding: 16px 16px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      display: flex;
-      flex-direction: column;
-      min-height: 220px;
-    }
-
-    .suite-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .suite-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.22);
-      object-fit: cover;
-      background: rgba(0,0,0,0.2);
-    }
-
-    .suite-title {
-      margin: 0;
-      font-size: 16px;
-      letter-spacing: 0.2px;
-    }
-
-    .suite-tag {
-      display: inline-block;
-      margin-top: 2px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .suite-body { margin: 8px 0 10px; color: var(--text); }
-    .suite-body p { margin: 0 0 10px; }
-    .suite-body ul { margin: 0; padding-left: 18px; color: var(--muted); }
-    .suite-body li { margin: 6px 0; }
-
-    .suite-actions {
-      margin-top: auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    /* Screenshots */
-    .shots { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 10px; }
-    .shots img {
-      width: 100%; height: auto;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-    }
-    @media (min-width: 820px) { .shots { grid-template-columns: 1fr 1fr; } }
-
-    footer { margin-top: 36px; color: var(--muted); font-size: 14px; text-align: center; }
-    footer a { color: var(--muted); }
-    footer a:hover { color: var(--text); }
-  </style>
 </head>
 
 <body>
-  <div class="container">
+  <header class="hero home-hero">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">
+        <img src="android-chrome-192x192.png" alt="StrataWrite icon">
+        <span>StrataSuite</span>
+      </a>
+      <div class="nav-links">
+        <a href="#stratawrite">StrataWrite</a>
+        <a href="#strataread">StrataRead</a>
+        <a href="blog.html">Updates</a>
+        <a href="mailto:stance@mac.com?subject=StrataWrite%20Support">Support</a>
+      </div>
+    </nav>
 
-    <!-- HERO: StrataWrite stays primary -->
-    <header class="hero">
-      <img src="android-chrome-192x192.png" alt="StrataWrite icon">
-      <div>
-        <h1>StrataWrite</h1>
-        <p class="sub">A research-first writing app for macOS and iPadOS. Clean drafting, daily word-count goals, and reliable exports.</p>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Mac and iPad research workflow</p>
+        <h1>StrataWrite turns notes, sources, and draft momentum into a calmer writing system.</h1>
+        <p class="hero-sub">A native workspace for research notes and manuscripts, paired with StrataRead for close PDF reading and annotation. Built for scholars who move between evidence, structure, and prose all day.</p>
         <div class="actions">
-          <a class="btn primary" href="mailto:stance@mac.com?subject=StrataWrite%20Support">Email Support</a>
-          <a class="btn" href="blog.html">Blog & Updates</a>
-          <a class="btn ghost" href="#stratasuite">StrataSuite</a>
+          <a class="button primary" href="#stratawrite">Explore StrataWrite</a>
+          <a class="button" href="#strataread">See StrataRead</a>
         </div>
       </div>
-    </header>
 
-    <section id="quickstart">
-      <h2>Quick Start</h2>
-      <div class="grid">
-        <div>
-          <p><strong>Platforms:</strong> macOS &amp; iPadOS.</p>
-          <p><strong>Best for:</strong> note taking and creating first drafts of manuscripts.</p>
-          <p><strong>Data:</strong> notes and manuscripts sync is managed via Apple CloudKit. Export Notes and Manuscripts as plaintext or Markdown.</p>
-        </div>
-        <div>
-          <p><strong>Contact:</strong> <a href="mailto:stance@mac.com">stance@mac.com</a></p>
-          <p><strong>Features:</strong> Markdown writing, bi-directional links, tags, Apple Writing Assistant, supports Sonny Software Bookends deep linking in notes, Apple Foundation Models.</p>
-          <p><strong>Apple Native:</strong> Text editors are SwiftUI with the use of Attributed Strings and all native Apple APIs.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+  </header>
 
-    <section id="features">
-      <h2>Why StrataWrite</h2>
-      <div class="grid">
-        <div>
-          <p><strong>Focused drafting:</strong> A clean editor designed for both note taking and creating manuscript first drafts. Focus on getting the words out, minimal formatting support. No image or table support.</p>
-          <p><strong>Daily momentum:</strong> Built-in word-count goals with lightweight progress tracking to keep projects moving.</p>
-          <p><strong>Straightforward exports:</strong> Get your work out cleanly as Markdown (<code>.md</code>) or plain text (<code>.txt</code>).</p>
+  <main>
+    <section class="proof-band" aria-label="Product highlights">
+      <div class="hero-proof">
+        <div class="proof-item">
+          <strong>Native Apple apps</strong>
+          <span>SwiftUI surfaces for macOS and iPadOS.</span>
         </div>
-        <div>
-          <p><strong>macOS + iPadOS:</strong> Native performance and familiar interactions across your devices.</p>
-          <p><strong>Simple by design:</strong> Essentials for research writing, without excess configuration.</p>
+        <div class="proof-item">
+          <strong>Research-first</strong>
+          <span>Notes, links, PDFs, tags, and drafts stay close.</span>
+        </div>
+        <div class="proof-item">
+          <strong>Private by design</strong>
+          <span>No analytics or tracking frameworks.</span>
         </div>
       </div>
     </section>
 
-    <!-- NEW: StrataSuite section -->
-    <section id="stratasuite">
-      <h2>StrataSuite</h2>
-      <p class="kicker">A focused set of research tools designed to work together: discover, read, take notes, and write.</p>
+    <section class="band white" id="stratawrite">
+      <div class="wrap product-row">
+        <div class="product-copy">
+          <div class="app-mark">
+            <img src="android-chrome-192x192.png" alt="">
+            <span>StrataWrite</span>
+          </div>
+          <h2>Write from the structure of your research, not from a blank page.</h2>
+          <p>StrataWrite is built around the realities of scholarly drafting: notes become evidence, evidence becomes structure, and structure becomes manuscript prose.</p>
 
-      <div class="suite-grid">
-
-        <!-- StrataWrite card -->
-        <article class="suite-card">
-          <div class="suite-top">
-            <img class="suite-icon" src="android-chrome-192x192.png" alt="StrataWrite icon">
-            <div>
-              <h3 class="suite-title">StrataWrite</h3>
-              <span class="suite-tag">Drafting & note network</span>
+          <div class="feature-lines">
+            <div class="feature-line">
+              <strong>Notes and manuscripts side by side</strong>
+              <p>Move between source notes, linked ideas, and long-form writing without changing tools.</p>
+            </div>
+            <div class="feature-line">
+              <strong>Bi-directional links, tags, and Spotlight search</strong>
+              <p>Find the thread again when a project has sprawled across weeks of reading.</p>
+            </div>
+            <div class="feature-line">
+              <strong>Daily word goals and clean exports</strong>
+              <p>Track drafting momentum and export Markdown or plain text when it is time to move on.</p>
             </div>
           </div>
-          <div class="suite-body">
-            <p>Research-first drafting with linked notes, tags, and clean exports.</p>
-            <ul>
-              <li>Markdown + plaintext exports</li>
-              <li>Bi-directional links and tags</li>
-              <li>Word-count goals and progress tracking</li>
-            </ul>
-          </div>
-          <div class="suite-actions">
-            <a class="btn small" href="#gallery">Screenshots</a>
-            <a class="btn small" href="mailto:stance@mac.com?subject=StrataWrite%20Support">Support</a>
-          </div>
-        </article>
+        </div>
 
-       <!-- StrataRead card -->
-       <article class="suite-card">
-         <!-- If you have an icon for StrataRead, replace assets/strataread-icon.png -->
-         <div class="suite-top">
-           <img class="suite-icon" src="assets/strataread-icon.png" alt="StrataRead icon">
-           <div>
-             <h3 class="suite-title">StrataRead</h3>
-             <span class="suite-tag">PDF library & annotation workflow</span>
-           </div>
-         </div>
-         <div class="suite-body">
-           <p>A PDF-first reading environment designed to keep annotations active and connected to your thinking tools.</p>
-           <ul>
-             <li>Import, organize, and read PDFs</li>
-             <li>Annotation-centric research workflow</li>
-             <li>Designed to integrate annotations with note-taking apps such as Obsidian and StrataWrite</li>
-           </ul>
-         </div>
-         <div class="suite-actions">
-           <!-- Replace href targets when you create pages -->
-           <a class="btn small" href="strataread.html">Learn More</a>
-           <a class="btn small" href="mailto:stance@mac.com?subject=StrataRead%20Support">Support</a>
-         </div>
-       </article>
-
-       <!-- StrataFeed card -->
-       <article class="suite-card">
-         <!-- If you have an icon for StrataFeed, replace assets/stratafeed-icon.png -->
-         <div class="suite-top">
-           <img class="suite-icon" src="assets/stratafeed-icon.png" alt="StrataFeed icon">
-           <div>
-             <h3 class="suite-title">StrataFeed</h3>
-             <span class="suite-tag">Research discovery & triage</span>
-           </div>
-         </div>
-         <div class="suite-body">
-           <p>A lightweight discovery and triage tool built to help you keep up with new papers and explore topics.</p>
-           <ul>
-             <li>Powered by <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a></li>
-             <li>Keep up with new papers across your fields</li>
-             <li>Explore topics, authors, and research trends</li>
-             <li>Fast triage: save / dismiss / revisit</li>
-           </ul>
-         </div>
-         <div class="suite-actions">
-           <!-- Replace href targets when you create pages -->
-           <a class="btn small" href="stratafeed.html">Learn More</a>
-           <a class="btn small" href="mailto:stance@mac.com?subject=StrataFeed%20Support">Support</a>
-         </div>
-       </article>
-
+        <figure class="screen ipad">
+          <img src="assets/shot1.png" alt="StrataWrite manuscript editor with project list, writing goals, and draft text.">
+          <figcaption class="screen-caption">Manuscript drafting with project status, goal tracking, font controls, and Markdown-aware text.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section id="gallery">
-      <h2>Screenshots</h2>
-      <div class="shots">
-        <img src="assets/shot1.png" alt="StrataWrite screenshot 1">
-        <img src="assets/shot2.png" alt="StrataWrite screenshot 2">
-        <img src="assets/shot3.png" alt="StrataWrite screenshot 3">
-        <img src="assets/shot4.png" alt="StrataWrite screenshot 4">
+    <section class="band dark">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Writing environment</p>
+          <h2>A focused surface for the messy middle of academic work.</h2>
+          <p class="lede">The interface keeps research structure visible without turning the page into a project-management board. The writing stays central.</p>
+        </div>
+
+        <div class="showcase-grid">
+          <figure class="screen ipad">
+            <img src="assets/shot2.png" alt="StrataWrite notes editor with linked writing text and formatting controls.">
+          </figure>
+          <figure class="screen ipad">
+            <img src="assets/shot4.png" alt="StrataWrite list and outline view for managing manuscript sections.">
+          </figure>
+        </div>
       </div>
-      <!-- Optional: later you can add a second screenshot grid for Read/Feed -->
-      <!--
-      <h3 style="margin-top:18px;margin-bottom:8px;">StrataRead & StrataFeed</h3>
-      <div class="shots">
-        <img src="assets/read1.png" alt="StrataRead screenshot 1">
-        <img src="assets/feed1.png" alt="StrataFeed screenshot 1">
-      </div>
-      -->
     </section>
 
-    <footer>
-      <p>&copy; <span id="year"></span> StrataSuite. All rights reserved.</p>
-      <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></p>
-      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    </footer>
+    <section class="band sage" id="strataread">
+      <div class="wrap product-row reverse">
+        <figure class="screen window">
+          <img src="assets/strataread-shot1.png" alt="StrataRead PDF reader with paper library and annotation controls.">
+          <figcaption class="screen-caption">PDF reading with a compact library, highlight tools, and the page itself given real space.</figcaption>
+        </figure>
 
-  </div>
+        <div class="product-copy">
+          <div class="app-mark">
+            <img src="assets/strataread-icon.png" alt="">
+            <span>StrataRead</span>
+          </div>
+          <h2>Read closely, annotate deliberately, and carry insights into writing.</h2>
+          <p>StrataRead gives PDFs a quiet, paper-forward workspace for the reading stage of research, with annotations designed to flow into StrataWrite or your existing note system.</p>
+
+          <div class="feature-lines">
+            <div class="feature-line">
+              <strong>PDF-first reading</strong>
+              <p>The paper remains the center of attention, with library tools kept close but restrained.</p>
+            </div>
+            <div class="feature-line">
+              <strong>Annotation-centered workflow</strong>
+              <p>Highlight arguments, claims, methods, and passages while the source context remains visible.</p>
+            </div>
+            <div class="feature-line">
+              <strong>Built for synthesis</strong>
+              <p>Use StrataRead as the reading surface and StrataWrite as the place where evidence becomes prose.</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="button light" href="strataread.html">Open StrataRead page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band white">
+      <div class="wrap">
+        <div class="section-heading center">
+          <p class="eyebrow">What the suite is for</p>
+          <h2>Research software for people who already have a serious writing practice.</h2>
+          <p class="lede">StrataSuite avoids the everything-app trap. It keeps the reading surface, note network, and manuscript surface distinct enough to stay usable.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-tile">
+            <h3>Structure-first thinking</h3>
+            <p>Use links, tags, categories, and outlines to keep arguments from dissolving into a pile of fragments.</p>
+          </article>
+          <article class="feature-tile">
+            <h3>Apple-native polish</h3>
+            <p>SwiftUI, CloudKit, native text systems, and platform conventions instead of a wrapped web interface.</p>
+          </article>
+          <article class="feature-tile">
+            <h3>Research privacy</h3>
+            <p>Your notes, manuscripts, PDFs, and annotations stay on device or in your private iCloud account if sync is enabled.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band mist">
+      <div class="wrap closing">
+        <div>
+          <h2>Questions, support, or TestFlight feedback?</h2>
+          <p>Send notes, bug reports, and workflow ideas directly. These apps are being shaped around real scholarly writing and reading habits.</p>
+        </div>
+        <a class="button light" href="mailto:stance@mac.com?subject=StrataSuite%20Support">Email Support</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="year"></span> StrataSuite. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a> · <a href="blog.html">Updates</a></span>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
 </body>
 </html>
