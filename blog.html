@@ -3,194 +3,198 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>StrataWrite — Updates &amp; Blog</title>
-  <meta name="description" content="Product updates, release notes, and development notes for StrataWrite.">
+  <title>StrataWrite Updates and Blog</title>
+  <meta name="description" content="Product updates, release notes, and development notes for StrataWrite and StrataRead.">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <style>
-    :root {
-      --bg: #0b1f36;
-      --bg2:#0e2d51;
-      --text:#e9f1ff;
-      --muted:#b7c6de;
-      --card:#10243f;
-      --accent:#79b4ff;
-      --border: rgba(255,255,255,0.12);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 80% -10%, var(--bg2), var(--bg)) fixed;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding: 28px 20px 80px;
-    }
-    .wrap{max-width:900px;margin:0 auto}
-    header{
-      display:flex;align-items:center;gap:14px;margin-bottom:16px
-    }
-    header img{width:40px;height:40px;border-radius:9px}
-    h1{margin:0;font-size:28px;letter-spacing:.2px}
-    .sub{color:var(--muted);margin:4px 0 0 0}
-    .post{
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 18px 6px;
-      margin: 18px 0;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
-    .post h2{margin:0 0 6px;font-size:20px}
-    .meta{color:var(--muted);font-size:14px;margin-bottom:10px}
-    .post p{margin:0 0 10px}
-    .divider{height:1px;background:var(--border);margin:14px 0}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    footer{margin-top:32px;color:var(--muted);font-size:14px;text-align:center}
-    .back{display:inline-block;margin-top:8px}
-  </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
+
 <body>
-  <div class="wrap">
-    <header id="top">
-      <img src="android-chrome-192x192.png" alt="StrataWrite icon">
-      <div>
-        <h1>StrataWrite — Updates &amp; Blog</h1>
-        <p class="sub">Release notes, development insights, and announcements.</p>
+  <header class="hero updates-hero">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">
+        <img src="android-chrome-192x192.png" alt="StrataWrite icon">
+        <span>StrataSuite</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#stratawrite">StrataWrite</a>
+        <a href="index.html#strataread">StrataRead</a>
+        <a href="blog.html">Updates</a>
+        <a href="mailto:stance@mac.com?subject=StrataSuite%20Support">Support</a>
       </div>
-    </header>
+    </nav>
 
-        <!-- NEW POSTS GO ABOVE THIS COMMENT. DUPLICATE THE TEMPLATE BELOW. -->
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Development notes and release updates</p>
+        <h1>Building research tools in public, one writing problem at a time.</h1>
+        <p class="hero-sub">Notes on StrataWrite, StrataRead, and the practical decisions behind a native research workflow for Mac and iPad.</p>
+        <div class="actions">
+          <a class="button primary" href="#introducing-stratasuite">Latest update</a>
+          <a class="button" href="index.html">Back to product page</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <article class="post" id="introducing-stratasuite">
-      <h2>Introducing StrataRead</h2>
-      <div class="meta">January 2026</div>
+  <main class="blog-main">
+    <section class="band white">
+      <div class="wrap blog-layout">
+        <div class="post-list">
+          <article class="post-card featured" id="introducing-stratasuite">
+            <div class="post-meta">
+              <span class="post-badge">Latest</span>
+              <span>January 2026</span>
+            </div>
+            <h2>Introducing StrataRead</h2>
 
-      <p>
-        Over the past year, <strong>StrataWrite</strong> has grown from a focused writing experiment
-        into the core of a broader research workflow. Today, I’m introducing a new companion app:
-        <strong>StrataRead</strong>.
-      </p>
+            <p>
+              Over the past year, <strong>StrataWrite</strong> has grown from a focused writing experiment
+              into the core of a broader research workflow. Today, I&rsquo;m introducing a new companion app:
+              <strong>StrataRead</strong>.
+            </p>
 
-      <p>
-        Together, these apps form <strong>StrataSuite</strong>—a set of research-first tools designed
-        to support the full lifecycle of academic work: reading, annotation, synthesis,
-        and writing.
-      </p>
+            <p>
+              Together, these apps form <strong>StrataSuite</strong>, a set of research-first tools designed
+              to support the full lifecycle of academic work: reading, annotation, synthesis, and writing.
+            </p>
 
-      <div class="divider"></div>
+            <div class="divider"></div>
 
-      <h3>StrataRead: Reading and Annotation</h3>
-      <p>
-        <strong>StrataRead</strong> is a PDF-first reading app built around annotation.
-        It assumes that your real thinking happens in notes and writing—tools like
-        <strong>StrataWrite</strong> or <strong>Obsidian</strong>.
-      </p>
+            <h3>StrataRead: Reading and Annotation</h3>
+            <p>
+              <strong>StrataRead</strong> is a PDF-first reading app built around annotation.
+              It assumes that your real thinking happens in notes and writing, in tools like
+              <strong>StrataWrite</strong> or <strong>Obsidian</strong>.
+            </p>
 
-      <p>
-        Rather than acting as a reference manager, StrataRead focuses on keeping PDFs organized
-        and annotations accessible, so insights can move naturally into your existing note-taking
-        workflow.
-      </p>
+            <p>
+              Rather than acting as a reference manager, StrataRead focuses on keeping PDFs organized
+              and annotations accessible, so insights can move naturally into your existing note-taking
+              workflow.
+            </p>
 
-      <ul>
-        <li>Read and annotate PDFs</li>
-        <li>Organize reading libraries for active research</li>
-        <li>Move insights into notes and writing systems</li>
-      </ul>
+            <ul>
+              <li>Read and annotate PDFs</li>
+              <li>Organize reading libraries for active research</li>
+              <li>Move insights into notes and writing systems</li>
+            </ul>
 
-      <div class="divider"></div>
+            <div class="divider"></div>
 
-      <h3>StrataSuite Going Forward</h3>
-      <p>
-        Each app in StrataSuite is intentionally narrow in scope:
-      </p>
+            <h3>StrataSuite Going Forward</h3>
+            <p>Each app in StrataSuite is intentionally narrow in scope:</p>
 
-      <ul>
-        <li><strong>StrataRead</strong> helps you engage deeply with PDFs and annotations</li>
-        <li><strong>StrataWrite</strong> is where synthesis and writing happen</li>
-      </ul>
+            <ul>
+              <li><strong>StrataRead</strong> helps you engage deeply with PDFs and annotations</li>
+              <li><strong>StrataWrite</strong> is where synthesis and writing happen</li>
+            </ul>
 
-      <p>
-        Both apps are Apple-native, avoid analytics and tracking, and keep your data
-        on-device or in your private iCloud account.
-      </p>
+            <p>
+              Both apps are Apple-native, avoid analytics and tracking, and keep your data
+              on-device or in your private iCloud account.
+            </p>
 
-      <p>
-        More details and a dedicated page for StrataRead are now live on the site.
-        I’ll continue sharing development notes and updates here as the suite evolves.
-      </p>
-    </article>
+            <p>
+              More details and a dedicated page for StrataRead are now live on the site.
+              I&rsquo;ll continue sharing development notes and updates here as the suite evolves.
+            </p>
+          </article>
 
-    <!-- PREVIOUS POSTS -->
-    <!-- NEW POSTS GO ABOVE THIS COMMENT. DUPLICATE THE TEMPLATE BELOW. -->
+          <article class="post-card" id="intro-stratawrite">
+            <div class="post-meta">
+              <span class="post-badge">Origin Story</span>
+              <span>September 2025</span>
+            </div>
+            <h2>Building StrataWrite: From Procrastination to Productivity</h2>
 
-    <article class="post" id="intro-stratawrite">
-  <h2>Building StrataWrite: From Procrastination to Productivity</h2>
-  <div class="meta">September 2025</div>
+            <p>As a hobby project, I&rsquo;ve created a new note-taking and writing app called <strong>StrataWrite</strong>. It began as an experiment for the Mac, and I&rsquo;m now extending it to the iPad as well. I am an assistant professor, archaeologist, and unabashed Mac nerd.</p>
 
-  <p>As a hobby project, I’ve created a new note-taking and writing app called <strong>StrataWrite</strong>. It began as an experiment for the Mac, and I’m now extending it to the iPad as well. I am an assistant professor, archaeologist, and unabashed Mac nerd.</p>
+            <p>My Apple journey started back in the 1990s as an undergraduate when I stumbled upon a lonely lab of Macintosh Classics. Everyone else gravitated to the PC labs, but the Mac immediately clicked for me. It worked the way my brain worked, and from then on I was hooked. Through graduate school and into my professional career, Macs have been my constant research and writing companions.</p>
 
-  <p>My Apple journey started back in the 1990s as an undergraduate when I stumbled upon a lonely lab of Macintosh Classics. Everyone else gravitated to the PC labs, but the Mac immediately clicked for me. It worked the way my brain worked, and from then on I was hooked. Through graduate school and into my professional career, Macs have been my constant research and writing companions.</p>
+            <p>I write a lot for my research, but like many academics I&rsquo;m also guilty of <em>procrastinating by exploring workflows</em>. StrataWrite started as another one of those experiments, perhaps even a procrastination crutch, but it has now grown into a tool I plan to use for real research and manuscripts.</p>
 
-  <p>I write a lot for my research, but like many academics I’m also guilty of <em>procrastinating by exploring workflows</em>. StrataWrite started as another one of those experiments—perhaps even a procrastination crutch—but it has now grown into a tool I plan to “eat my own dog food” with, using it for real research and manuscripts.</p>
+            <h3>Influences and Inspirations</h3>
+            <p>I&rsquo;ve used and loved apps like <strong>Ulysses</strong> for its minimalist interface, <strong>Scrivener</strong> for its power, and more recently <strong>Obsidian, Roam, and Craft</strong>. Obsidian fascinates me but never quite fits my process. The linking and Zettelkasten approach is brilliant for some, but I&rsquo;m more of a <em>structure-first thinker</em>. For me, fast search and minimal structure beats elaborate organizing systems.</p>
 
-  <h3>Influences and Inspirations</h3>
-  <p>I’ve used—and loved—apps like <strong>Ulysses</strong> for its minimalist interface, <strong>Scrivener</strong> for its power, and more recently <strong>Obsidian, Roam, and Craft</strong>. Obsidian fascinates me but never quite fits my process. The linking and Zettelkasten approach is brilliant for some, but I’m more of a <em>structure-first thinker</em>. For me, fast search and minimal structure beats elaborate organizing systems.</p>
+            <h3>My Writing Process</h3>
+            <p>My research writing begins with constant reading of PDFs: journal articles, chapters, and books. I highlight and annotate extensively. For citation management, I use <strong>Bookends by Sonny Software</strong>. It&rsquo;s indie, Mac-first, and offers something I love: the ability to extract highlights with <em>deep links back into the PDF</em>. These links now integrate beautifully with StrataWrite.</p>
 
-  <h3>My Writing Process</h3>
-  <p>My research writing begins with constant reading of PDFs—journal articles, chapters, and books. I highlight and annotate extensively. For citation management, I use <strong>Bookends by Sonny Software</strong>. It’s indie, Mac-first, and offers something I love: the ability to extract highlights with <em>deep links back into the PDF</em>. These links now integrate beautifully with StrataWrite.</p>
+            <p>Writing a research paper is always about <strong>structure</strong>: a central research question, supporting data, methodology, results, and contextual discussion. That structure is what organizes my notes. My students hear me say this often: without a research question, the paper collapses. StrataWrite reflects that same philosophy.</p>
 
-  <p>Writing a research paper is always about <strong>structure</strong>: a central research question, supporting data, methodology, results, and contextual discussion. That structure is what organizes my notes. My students hear me say this often: without a research question, the paper collapses. StrataWrite reflects that same philosophy.</p>
+            <h3>Why StrataWrite?</h3>
+            <p>The name is inspired by <strong>archaeology</strong>. Strata are the layers of sediment and soil that accumulate over time, preserving artifacts of past lives. Similarly, StrataWrite layers notes, sources, and structures into something coherent. It also echoes ideas from <em>practice theory</em> and even <em>assembly theory</em> in physics.</p>
 
-  <h3>Why “StrataWrite”?</h3>
-  <p>The name is inspired by <strong>archaeology</strong>. Strata are the layers of sediment and soil that accumulate over time, preserving artifacts of past lives. Similarly, StrataWrite layers notes, sources, and structures into something coherent. It also echoes ideas from <em>practice theory</em> (“structures structuring structures”) and even <em>assembly theory</em> in physics.</p>
+            <h3>How StrataWrite Works</h3>
+            <p>At its core, StrataWrite is powered by <strong>plain text notes</strong>:</p>
+            <ul>
+              <li>Notes are searchable through Apple&rsquo;s <strong>Core Spotlight</strong>.</li>
+              <li>They can be filtered by categories: Document, Source, Note, and Journal.</li>
+              <li>Search results are weighted by relevance, showing previews of context.</li>
+            </ul>
 
-  <h3>How StrataWrite Works</h3>
-  <p>At its core, StrataWrite is powered by <strong>plain text notes</strong>:</p>
-  <ul>
-    <li>Notes are searchable through Apple’s <strong>Core Spotlight</strong>.</li>
-    <li>They can be filtered by categories (Document, Source, Note, Journal) and tags.</li>
-    <li>Search results are weighted by relevance, showing previews of context.</li>
-  </ul>
+            <p>From there:</p>
+            <ul>
+              <li>Notes can be copied or exported as plain text files, individually or in bulk.</li>
+              <li>Markdown preview makes links and formatting functional.</li>
+              <li>Wiki-style links create connections between notes, supported by a <strong>Links Panel</strong> for navigation.</li>
+            </ul>
 
-  <p>From there:</p>
-  <ul>
-    <li>Notes can be copied or exported as plain text files (individually or in bulk).</li>
-    <li>Markdown preview makes links and formatting functional.</li>
-    <li>Wiki-style links (<code>[note title]</code>) create connections between notes, supported by a <strong>Links Panel</strong> for navigation.</li>
-  </ul>
+            <p>I&rsquo;ve also experimented with <strong>on-device AI features</strong> using Apple&rsquo;s new foundation models: summarization, keyword extraction, and question-answering for short notes. These are still limited by context size, but the promise of private, on-device models that can query all notes is on the horizon.</p>
 
-  <p>I’ve also experimented with <strong>on-device AI features</strong> using Apple’s new foundation models: summarization, keyword extraction, and question-answering for short notes. These are still limited by context size, but the promise of <em>private, on-device LLMs</em> that can query all notes is on the horizon—and that excites me more than any current workaround.</p>
+            <p>The interface also supports collapsing panels for a <strong>distraction-free writing mode</strong>. And everything syncs across devices using <strong>CloudKit</strong>.</p>
 
-  <p>The interface also supports collapsing panels for a <strong>distraction-free writing mode</strong>. And everything syncs across devices using <strong>CloudKit</strong>.</p>
+            <h3>The Manuscripts View</h3>
+            <p>Beyond notes, StrataWrite now includes a dedicated <strong>Manuscripts view</strong>. This is a separate window designed specifically for long-form writing:</p>
+            <ul>
+              <li><strong>Word goal tracking</strong> helps writers pace progress over time.</li>
+              <li>A <strong>basic outlining tool</strong> structures your draft in sections.</li>
+              <li>By keeping manuscripts separate from notes, the app creates a focused environment for drafting research papers or long essays.</li>
+            </ul>
 
-  <h3>The Manuscripts View</h3>
-  <p>Beyond notes, StrataWrite now includes a dedicated <strong>Manuscripts view</strong>. This is a separate window designed specifically for long-form writing:</p>
-  <ul>
-    <li><strong>Word goal tracking</strong> helps writers pace progress over time.</li>
-    <li>A <strong>basic outlining tool</strong> structures your draft in sections.</li>
-    <li>By keeping manuscripts separate from notes, the app creates a focused environment for drafting research papers or long essays.</li>
-  </ul>
+            <h3>Future Plans</h3>
+            <p>StrataWrite is still evolving, but here is what is next:</p>
+            <ul>
+              <li>A <strong>Spreadsheet view</strong> for writers who prefer organizing information in tables.</li>
+            </ul>
+          </article>
+        </div>
 
-  <h3>Future Plans</h3>
-  <p>StrataWrite is still evolving, but here’s what’s next:</p>
-  <ul>
-    <li>A <strong>Spreadsheet view</strong> for writers who prefer organizing information in tables.</li>
-  </ul>
+        <aside class="blog-sidebar" aria-label="Blog sidebar">
+          <div class="sidebar-panel">
+            <h2>Updates</h2>
+            <p>Development notes, release announcements, and reflections on building native research tools.</p>
+          </div>
 
-    </article>
+          <div class="sidebar-panel">
+            <h3>Archive</h3>
+            <div class="archive-list">
+              <a href="#introducing-stratasuite">Introducing StrataRead <span>January 2026</span></a>
+              <a href="#intro-stratawrite">Building StrataWrite <span>September 2025</span></a>
+            </div>
+          </div>
 
-    <footer>
-      <p><a href="/">← Back to Support</a></p>
-      <p><a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></p>
-    </footer>
-  </div>
+          <div class="sidebar-panel">
+            <h3>Product Pages</h3>
+            <div class="archive-list">
+              <a href="index.html#stratawrite">StrataWrite <span>Notes and manuscripts</span></a>
+              <a href="strataread.html">StrataRead <span>PDF reading and annotation</span></a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="year"></span> StrataSuite. All rights reserved.</span>
+      <span><a href="index.html">Product Page</a> · <a href="privacy.html">Privacy Policy</a> · <a href="privacy-choices.html">Privacy Choices</a></span>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
 </body>
 </html>
